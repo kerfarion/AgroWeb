@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}AgroWeb{% endblock %}</title>
+    <link href='{% static "Catalog/css/base.css" %}' rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <h1>AgroWeb</h1>
+            <nav class="nav">
+                <a href="{% url 'about' %}" class="name">AgroWeb</a>
+                <a href="{% url 'about' %}" class="name">AgroWeb</a>
+                <a href="{% url 'about' %}" class="name">AgroWeb</a>
+            </nav>
+        </div>
+    </header>
+    <div class="main">
+        <aside>
+            <div class="aside-kind-category">
+                <h3>Виды</h3>
+                {% block aside-kind %}
+                {% endblock %}
+            </div>
+        </aside>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

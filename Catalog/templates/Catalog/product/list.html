@@ -1,0 +1,42 @@
+{% extends "Catalog/base.html" %}
+{% load static %}
+{% block title %}
+    {% if kind %}
+        {{ kind.name }}
+    {% else %}
+        Products
+    {% endif %}
+{% endblock %}
+
+{% block aside-kind %}
+    {% if not kind %}
+        {% for kind in kinds %}
+            <p><a href="/compot/filter/{{kind.slug}}">{{kind.name}}</a></p>
+        {% endfor %}
+    {% elif kind %}
+        <a href="/compot">Back</a>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% for product in products %}
+    <div class="card">
+        <div class="card-name">
+            <h3>{{product.name}}</h3>
+        </div>
+        <div class="card-img">
+            <img src="{{ product.image }}">
+        </div>
+        <h5>
+            вид: {{ product.kind }}
+        </h5>
+        <h5>
+            Категории:
+            {% for category in product.category.all %}
+                    <p>  {{category}}</p>
+            {% endfor %}
+        </h5>
+        <p>Цена: {{product.price}}₽</p>
+        <p>В наличии {{product.stock}} штук</p>
+    </div>
+    {% endfor %}
+{% endblock %}
