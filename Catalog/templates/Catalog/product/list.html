@@ -27,20 +27,19 @@
             {% if product.image %}
                 <img src="{{ product.image.url }}">
             {% else %}
-                <p>aaa</p>
+                <p>Фото не загруженно</p>
             {% endif %}
         </div>
         <h5>
-            вид: {{ product.kind }}
-        </h5>
-        <h5>
-            Категории:
             {% for category in product.category.all %}
-                    <p>  {{category}}</p>
+            <div class="card-info">
+                <p>{{category}}</p>
+            </div>
             {% endfor %}
         </h5>
-        <p>Цена: {{product.price}}₽</p>
-        <p>В наличии {{product.stock}} штук</p>
+        <div class="card-info">
+            <p>{{product.price}}₽</p>
+        </div>
     </div>
     {% endfor %}
 {% endblock %}

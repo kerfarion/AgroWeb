@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+img {
+    height: 30vh;
+    width: 18vw
+}
+
 .wrapper {
     margin: 0 auto;
     margin-left: 0;
@@ -50,7 +55,7 @@
     padding-top: 0;
     height: auto;
     width: auto;
-    background: #c9b2b2;
+    background: #fff;
 }
 
 aside {
@@ -61,9 +66,8 @@ aside {
 
 .card {
     display: block;
-    background: #a00909;
     width: 18vw;
-    height: 45vh;
+    height: 55vh;
     margin-top: 2%;
 }
 
@@ -71,4 +75,9 @@ aside {
     text-align: center;
     font-family: cursive;
     font-size: 20px;
+}
+
+.card-info {
+    text-align: center;
+    font-family: cursive;
 }
