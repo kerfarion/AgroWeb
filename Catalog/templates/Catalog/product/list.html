@@ -14,9 +14,33 @@
             <p><a href="/compot/filter/{{kind.slug}}">{{kind.name}}</a></p>
         {% endfor %}
     {% elif kind %}
-        <a href="/compot">Back</a>
+        {% for kin in kinds %}
+            {% if not kin.name == kind.name %}
+                <p><a href="/compot/filter/{{kin.slug}}">{{kin.name}}</a></p>
+            {% endif %}
+        {% endfor %}
     {% endif %}
 {% endblock %}
+
+{% block filter %}
+    {% if not kind %}
+        {% for kind in kinds %}
+            <div class="table"><h4>{{kind.name}}:</h4></div>
+            {% for category in categories %}
+                {% if category.category == kind %} 
+                    <p><a href="/compot/filter/{{kind.slug}}/{{category.slug}}">{{category.name}}</a></p>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% elif kind %}
+        {% for category in categories %}
+            {% if category.category == kind %} 
+                <p><a href="/compot/filter/{{kind.slug}}/{{category.slug}}">{{category.name}}</a></p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     {% for product in products %}
     <div class="card">
@@ -25,7 +49,7 @@
         </div>
         <div class="card-img">
             {% if product.image %}
-                <img src="{{ product.image.url }}">
+                <img class='card-img' src="{{ product.image.url }}">
             {% else %}
                 <p>Фото не загруженно</p>
             {% endif %}

@@ -11,17 +11,22 @@
         <div class="wrapper site-header__wrapper">
             <h1>AgroWeb</h1>
             <nav class="nav">
-                <a href="{% url 'about' %}" class="name">AgroWeb</a>
-                <a href="{% url 'about' %}" class="name">AgroWeb</a>
-                <a href="{% url 'about' %}" class="name">AgroWeb</a>
+                <a href="{% url 'product_list' %}">Главная</a>
+                <a href="{% url 'about' %}">О нас</a>
+                <a href="{% url 'contacts' %}">Контакты</a>
             </nav>
         </div>
     </header>
     <div class="main">
         <aside>
             <div class="aside-kind-category">
-                <h3>Виды</h3>
+                <h3>Виды растений:</h3>
                 {% block aside-kind %}
+                {% endblock %}
+            </div>
+            <div class="filter-aside">
+                <h3>Характеристики сортов:</h3>
+                {% block filter %}
                 {% endblock %}
             </div>
         </aside>

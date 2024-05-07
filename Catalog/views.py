@@ -8,11 +8,18 @@ def product_list(request, kind_slug=None, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.all().filter(available=True)
-    if kind_slug:
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+        kind = category.category
+
+    elif kind_slug:
         kind = get_object_or_404(Kind, slug=kind_slug)
         products = products.filter(kind=kind)
+        categories = categories.filter(category=kind)
 
-    return render(request, "Catalog/product/list.html", {"kind": kind, "kinds": kinds, "products": products})
+    return render(request, "Catalog/product/list.html", {"kind": kind, "kinds": kinds, "products": products, "categories": categories})
 
 
 def product_detail(request, id, slug):
